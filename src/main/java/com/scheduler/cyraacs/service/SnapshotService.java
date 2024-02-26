@@ -30,7 +30,6 @@ public class SnapshotService {
 
 
         @Scheduled(cron="0/15 * * * * *")
-
         public void takeSnapshot(){
             List<ControlRequirements> cr_list = crRepo.findAll();
 
@@ -69,8 +68,7 @@ public class SnapshotService {
                 crSnaphot.setCaptured_at(today);
                 crSnaphot.setComplaince_status(cr.isCompliance_status());
                 crSnapshotRepo.save(crSnaphot);
-                System.out.println("CR table snapshot successfully taken.");
-                notificationService.sendNotification("Sna`pshot taken successfully - Notification  ");
+                notificationService.sendNotification("Notification : Snapshot taken successfully");
 
                 // Follow-up snapshot of CR_snapshot table to Task_Snapshot table
                 Task_snapshot taskSnapshot = new Task_snapshot();

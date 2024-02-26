@@ -13,12 +13,10 @@ public class ControlRequirements {
     private String org_key;
     private String statement;
     private Integer domain_id;
-
     private String type;
     private Integer owner_id;
     private String health;
     private Integer implementationStatusId;
-
     private String implementationGuideline;
     private Date implementationTargetDate;
     private Date implementationDueDate;
