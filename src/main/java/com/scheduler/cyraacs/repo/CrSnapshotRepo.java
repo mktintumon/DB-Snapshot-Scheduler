@@ -1,8 +1,10 @@
 package com.scheduler.cyraacs.repo;
 
-import com.scheduler.cyraacs.models.Cr_snaphot;
+import com.scheduler.cyraacs.models.CrSnaphot;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface CrSnapshotRepo extends JpaRepository<Cr_snaphot , Integer> {
+@Repository
+public interface CrSnapshotRepo extends JpaRepository<CrSnaphot , Integer> {
 
 }

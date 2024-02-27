@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
-public class CR_Controller {
+public class CrController {
         @Autowired
         CrRepo crRepo;
 
@@ -16,14 +16,14 @@ public class CR_Controller {
         @PostMapping("/setStatusFalse/{cr_id}")
         public void changeComplianceStatusFalse(@PathVariable Integer cr_id) {
                 ControlRequirements controlRequirements = crRepo.findByControlId(cr_id);
-                controlRequirements.setCompliance_status(false);
+                controlRequirements.setComplianceStatus(false);
         }
 
         @PostMapping("/setStatusTrue/{cr_id}")
         public void changeComplianceStatusTrue(@PathVariable Integer cr_id) {
                 ControlRequirements controlRequirements = crRepo.findByControlId(cr_id);
                 System.out.println(controlRequirements.getControlId());
-                controlRequirements.setCompliance_status(true);
+                controlRequirements.setComplianceStatus(true);
                 crRepo.save(controlRequirements);
         }
 

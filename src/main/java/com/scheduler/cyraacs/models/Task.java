@@ -9,87 +9,97 @@ public class Task {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer task_id;
+    private Integer taskId;
 
-    private String task_desc;
-    private boolean task_status;
-    private int task_frequency;
-
-    private Date task_created_at;
-    private Date task_updated_at;
-
-    private Date last_snapshot_on;
+    private String taskDesc;
+    private boolean taskStatus;
+    private int taskFrequency;
+    private Date taskCreatedAt;
+    private Date taskUpdatedAt;
+    private Date lastSnapshotOn;
 
     @ManyToOne
     @JoinColumn(name="controlId")
     private ControlRequirements controlRequirements;
 
-    public Date getLast_snapshot_on() {
-        return last_snapshot_on;
-    }
-
-    public void setLast_snapshot_on(Date last_snapshot_on) {
-        this.last_snapshot_on = last_snapshot_on;
-    }
-
-    public Task(Integer task_id, String task_desc, boolean task_status, int task_frequency, Date task_created_at, Date task_updated_at, Date last_snapshot_on) {
-        this.task_id = task_id;
-        this.task_desc = task_desc;
-        this.task_status = task_status;
-        this.task_frequency = task_frequency;
-        this.task_created_at = task_created_at;
-        this.task_updated_at = task_updated_at;
-        this.last_snapshot_on = last_snapshot_on;
-    }
     public Task(){
     }
 
-    public Integer getTask_id() {
-        return task_id;
+    public Task(Integer taskId, String taskDesc, boolean taskStatus, int taskFrequency, Date taskCreatedAt,
+            Date taskUpdatedAt, Date lastSnapshotOn, ControlRequirements controlRequirements) {
+        this.taskId = taskId;
+        this.taskDesc = taskDesc;
+        this.taskStatus = taskStatus;
+        this.taskFrequency = taskFrequency;
+        this.taskCreatedAt = taskCreatedAt;
+        this.taskUpdatedAt = taskUpdatedAt;
+        this.lastSnapshotOn = lastSnapshotOn;
+        this.controlRequirements = controlRequirements;
     }
 
-    public void setTask_id(Integer task_id) {
-        this.task_id = task_id;
+    public Integer getTaskId() {
+        return taskId;
     }
 
-    public String getTask_desc() {
-        return task_desc;
+    public void setTaskId(Integer taskId) {
+        this.taskId = taskId;
     }
 
-    public void setTask_desc(String task_desc) {
-        this.task_desc = task_desc;
+    public String getTaskDesc() {
+        return taskDesc;
     }
 
-    public boolean isTask_status() {
-        return task_status;
+    public void setTaskDesc(String taskDesc) {
+        this.taskDesc = taskDesc;
     }
 
-    public void setTask_status(boolean task_status) {
-        this.task_status = task_status;
+    public boolean isTaskStatus() {
+        return taskStatus;
     }
 
-    public int getTask_frequency() {
-        return task_frequency;
+    public void setTaskStatus(boolean taskStatus) {
+        this.taskStatus = taskStatus;
     }
 
-    public void setTask_frequency(int task_frequency) {
-        this.task_frequency = task_frequency;
+    public int getTaskFrequency() {
+        return taskFrequency;
     }
 
-    public Date getTask_created_at() {
-        return task_created_at;
+    public void setTaskFrequency(int taskFrequency) {
+        this.taskFrequency = taskFrequency;
     }
 
-    public void setTask_created_at(Date task_created_at) {
-        this.task_created_at = task_created_at;
+    public Date getTaskCreatedAt() {
+        return taskCreatedAt;
     }
 
-    public Date getTask_updated_at() {
-        return task_updated_at;
+    public void setTaskCreatedAt(Date taskCreatedAt) {
+        this.taskCreatedAt = taskCreatedAt;
     }
 
-    public void setTask_updated_at(Date task_updated_at) {
-        this.task_updated_at = task_updated_at;
+    public Date getTaskUpdatedAt() {
+        return taskUpdatedAt;
     }
 
+    public void setTaskUpdatedAt(Date taskUpdatedAt) {
+        this.taskUpdatedAt = taskUpdatedAt;
+    }
+
+    public Date getLastSnapshotOn() {
+        return lastSnapshotOn;
+    }
+
+    public void setLastSnapshotOn(Date lastSnapshotOn) {
+        this.lastSnapshotOn = lastSnapshotOn;
+    }
+
+    public ControlRequirements getControlRequirements() {
+        return controlRequirements;
+    }
+
+    public void setControlRequirements(ControlRequirements controlRequirements) {
+        this.controlRequirements = controlRequirements;
+    }
+
+    
 }

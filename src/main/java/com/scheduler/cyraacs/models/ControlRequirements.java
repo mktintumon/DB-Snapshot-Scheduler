@@ -10,44 +10,54 @@ public class ControlRequirements {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer controlId;
 
-    private String org_key;
+    private String orgKey;
     private String statement;
-    private Integer domain_id;
+    private Integer domainId;
     private String type;
-    private Integer owner_id;
+    private Integer ownerId;
+    private String frequency;
     private String health;
+    private Integer ruleId;
+    private String createdBy;
+    private String description;
+    private Date createdAt;
+    private Date updatedAt;
+    private Date lastSnapshotOn;
+    private boolean complianceStatus;
+    private Date frequencyExpiryDate;
+    private String applicabilityStatus;
     private Integer implementationStatusId;
     private String implementationGuideline;
     private Date implementationTargetDate;
     private Date implementationDueDate;
-    private Integer ruleId;
-    private String applicabilityStatus;
-    private String createdBy;
 
-    public ControlRequirements(){
+    public ControlRequirements() {
 
     }
 
     // USED
-    public ControlRequirements(Integer controlId, String description, boolean compliance_status, Date created_at, Date updated_at, int frequency, Date last_snapshot_on, Date frequency_expiry_date) {
+    public ControlRequirements(Integer controlId, String description, boolean complianceStatus, Date createdAt,Date updatedAt, String frequency, Date lastSnapshotOn, Date frequencyExpiryDate) {
         this.controlId = controlId;
         this.description = description;
-        this.compliance_status = compliance_status;
-        this.created_at = created_at;
-        this.updated_at = updated_at;
+        this.complianceStatus = complianceStatus;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
         this.frequency = frequency;
-        this.last_snapshot_on = last_snapshot_on;
-        this.frequency_expiry_date = frequency_expiry_date;
+        this.lastSnapshotOn = lastSnapshotOn;
+        this.frequencyExpiryDate = frequencyExpiryDate;
     }
 
-
-    public ControlRequirements(Integer controlId, String org_key, String statement, Integer domain_id, String type, Integer owner_id, String health, Integer implementationStatusId, String implementationGuideline, Date implementationTargetDate, Date implementationDueDate, Integer ruleId, String applicabilityStatus, String createdBy, String description, boolean compliance_status, Date created_at, Date updated_at, int frequency, Date last_snapshot_on, Date frequency_expiry_date) {
+    public ControlRequirements(Integer controlId, String orgKey, String statement, Integer domainId, String type,
+            Integer ownerId, String health, Integer implementationStatusId, String implementationGuideline,
+            Date implementationTargetDate, Date implementationDueDate, Integer ruleId, String applicabilityStatus,
+            String createdBy, String description, boolean complianceStatus, Date createdAt, Date updatedAt,
+            String frequency, Date lastSnapshotOn, Date frequencyExpiryDate) {
         this.controlId = controlId;
-        this.org_key = org_key;
+        this.orgKey = orgKey;
         this.statement = statement;
-        this.domain_id = domain_id;
+        this.domainId = domainId;
         this.type = type;
-        this.owner_id = owner_id;
+        this.ownerId = ownerId;
         this.health = health;
         this.implementationStatusId = implementationStatusId;
         this.implementationGuideline = implementationGuideline;
@@ -57,20 +67,28 @@ public class ControlRequirements {
         this.applicabilityStatus = applicabilityStatus;
         this.createdBy = createdBy;
         this.description = description;
-        this.compliance_status = compliance_status;
-        this.created_at = created_at;
-        this.updated_at = updated_at;
+        this.complianceStatus = complianceStatus;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
         this.frequency = frequency;
-        this.last_snapshot_on = last_snapshot_on;
-        this.frequency_expiry_date = frequency_expiry_date;
+        this.lastSnapshotOn = lastSnapshotOn;
+        this.frequencyExpiryDate = frequencyExpiryDate;
     }
 
-    public String getOrg_key() {
-        return org_key;
+    public Integer getControlId() {
+        return controlId;
     }
 
-    public void setOrg_key(String org_key) {
-        this.org_key = org_key;
+    public void setControlId(Integer controlId) {
+        this.controlId = controlId;
+    }
+
+    public String getOrgKey() {
+        return orgKey;
+    }
+
+    public void setOrgKey(String orgKey) {
+        this.orgKey = orgKey;
     }
 
     public String getStatement() {
@@ -81,12 +99,12 @@ public class ControlRequirements {
         this.statement = statement;
     }
 
-    public Integer getDomain_id() {
-        return domain_id;
+    public Integer getDomainId() {
+        return domainId;
     }
 
-    public void setDomain_id(Integer domain_id) {
-        this.domain_id = domain_id;
+    public void setDomainId(Integer domainId) {
+        this.domainId = domainId;
     }
 
     public String getType() {
@@ -97,12 +115,12 @@ public class ControlRequirements {
         this.type = type;
     }
 
-    public Integer getOwner_id() {
-        return owner_id;
+    public Integer getOwnerId() {
+        return ownerId;
     }
 
-    public void setOwner_id(Integer owner_id) {
-        this.owner_id = owner_id;
+    public void setOwnerId(Integer ownerId) {
+        this.ownerId = ownerId;
     }
 
     public String getHealth() {
@@ -113,12 +131,12 @@ public class ControlRequirements {
         this.health = health;
     }
 
-    public Integer implementationStatusId() {
+    public Integer getImplementationStatusId() {
         return implementationStatusId;
     }
 
-    public void implementationStatusId(Integer implementatioStatusId) {
-        this.implementationStatusId = implementatioStatusId;
+    public void setImplementationStatusId(Integer implementationStatusId) {
+        this.implementationStatusId = implementationStatusId;
     }
 
     public String getImplementationGuideline() {
@@ -169,38 +187,6 @@ public class ControlRequirements {
         this.createdBy = createdBy;
     }
 
-    private String description;
-    private boolean compliance_status;
-
-    private Date created_at;
-
-
-    private Date updated_at;
-
-
-    private int frequency;
-
-    private Date last_snapshot_on;
-
-    private Date frequency_expiry_date;
-
-
-    public Date getFrequency_expiry_date() {
-        return frequency_expiry_date;
-    }
-
-    public void setFrequency_expiry_date(Date frequency_expiry_date) {
-        this.frequency_expiry_date = frequency_expiry_date;
-    }
-
-    public Integer getControlId() {
-        return controlId;
-    }
-
-    public void setControlId(Integer controlId) {
-        this.controlId = controlId;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -209,43 +195,54 @@ public class ControlRequirements {
         this.description = description;
     }
 
-    public boolean isCompliance_status() {
-        return compliance_status;
+    public boolean isComplianceStatus() {
+        return complianceStatus;
     }
 
-    public void setCompliance_status(boolean compliance_status) {
-        this.compliance_status = compliance_status;
+    public void setComplianceStatus(boolean complianceStatus) {
+        this.complianceStatus = complianceStatus;
     }
 
-    public Date getCreated_at() {
-        return created_at;
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreated_at(Date created_at) {
-        this.created_at = created_at;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public Date getUpdated_at() {
-        return updated_at;
+    public Date getUpdatedAt() {
+        return updatedAt;
     }
 
-    public void setUpdated_at(Date updated_at) {
-        this.updated_at = updated_at;
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
-    public int getFrequency() {
+    public String getFrequency() {
         return frequency;
     }
 
-    public void setFrequency(int frequency) {
+    public void setFrequency(String frequency) {
         this.frequency = frequency;
     }
 
-    public Date getLast_snapshot_on() {
-        return last_snapshot_on;
+    public Date getLastSnapshotOn() {
+        return lastSnapshotOn;
     }
 
-    public void setLast_snapshot_on(Date last_snapshot_on) {
-        this.last_snapshot_on = last_snapshot_on;
+    public void setLastSnapshotOn(Date lastSnapshotOn) {
+        this.lastSnapshotOn = lastSnapshotOn;
     }
+
+    public Date getFrequencyExpiryDate() {
+        return frequencyExpiryDate;
+    }
+
+    public void setFrequencyExpiryDate(Date frequencyExpiryDate) {
+        this.frequencyExpiryDate = frequencyExpiryDate;
+    }
+
+    
+
 }
