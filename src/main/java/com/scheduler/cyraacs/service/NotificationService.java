@@ -30,6 +30,7 @@ public class NotificationService {
             CrPreference preference = crPreferenceRepo.findTimeZoneOfSchedulerById(1);
             Integer advanceNotifyDay = preference.getFrequencyAdvanceReminderNotification();
 
+            // 1 day = (long)(24 * 60 * 60 * 1000)
             long expireNotifyDay = today.getTime() + ((long) advanceNotifyDay * 24 * 60 * 60 * 1000);
             Date notifyDate = new Date(expireNotifyDay);
 
@@ -40,16 +41,16 @@ public class NotificationService {
             }
         } catch (DataAccessException e) {
             // Handle data access exceptions
-            logger.error("An error occurred during notification processing. Date: {}. Error: {}", today, e.getMessage(), e);
+            logger.error("Not able to access data. Date: {}. Error: {}", today, e.getMessage(),
+                    e);
         } catch (Exception e) {
             // Handle other exceptions
-            logger.error("An error occurred during notification processing. Date: {}. Error: {}", today, e.getMessage(), e);
+            logger.error("Error occurred during notification processing. Date: {}. Error: {}", today, e.getMessage(),e);
         }
     }
 
     public String getTimeZone() {
         CrPreference preference = crPreferenceRepo.findTimeZoneOfSchedulerById(1);
-        String timeZone = (preference != null) ? preference.getTimeZoneOfScheduler() : "Asia/Kolkata";
-        return timeZone;
+        return (preference != null) ? preference.getTimeZoneOfScheduler() : "Asia/Kolkata";
     }
 }

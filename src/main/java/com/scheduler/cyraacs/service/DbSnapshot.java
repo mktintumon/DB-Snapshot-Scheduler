@@ -25,9 +25,10 @@ public class DbSnapshot {
     @Autowired
     NotificationService notificationService;
 
-    // Main function for creating snapshot by looping over potential CR's(whose expiry date arrived)
+    // Main function for creating snapshot by looping over potential CR's(whose expiry date has arrived)
     @Scheduled(cron = "0/15 * * * * *")
     public void Snapshot() {
+
         String timeZone = notificationService.getTimeZone();
         // Set the time zone for this thread
         TimeZone.setDefault(TimeZone.getTimeZone(timeZone));
@@ -36,10 +37,10 @@ public class DbSnapshot {
             Date today = new Date(System.currentTimeMillis());
 
             List<ControlRequirements> crList = crRepo.findByFrequencyExpiryDate(today);
-    
+
             if (!crList.isEmpty()) {
                 for (ControlRequirements cr : crList) {
-                    snapShotHelper(cr,today);
+                    snapShotHelper(cr, today);
                 }
                 logger.info("Scheduler executed the job");
 
@@ -55,12 +56,12 @@ public class DbSnapshot {
         }
     }
 
-
     // Helper function for calculating Dates and taking snapshots
-    private void snapShotHelper(ControlRequirements cr , Date today) {
+    private void snapShotHelper(ControlRequirements cr, Date today) {
         try {
             int frequency = convertToDays(cr.getFrequency());
 
+            // 1 day = (long)(24 * 60 * 60 * 1000)
             long next_expiry_time = today.getTime() + ((long) frequency * 24 * 60 * 60 * 1000);
             Date next_expiry_date = new Date(next_expiry_time);
 
@@ -78,7 +79,6 @@ public class DbSnapshot {
         }
     }
 
-
     // Converts String frequency to Int type
     private static int convertToDays(String timePeriod) {
         switch (timePeriod.toLowerCase().trim()) {
@@ -90,7 +90,7 @@ public class DbSnapshot {
                 return 14;
             case "fortnight":
             case "fortnightly":
-                return 15; 
+                return 15;
             case "monthly":
                 return 30;
             case "quarterly":
@@ -106,6 +106,4 @@ public class DbSnapshot {
         }
     }
 
-
-    
 }
